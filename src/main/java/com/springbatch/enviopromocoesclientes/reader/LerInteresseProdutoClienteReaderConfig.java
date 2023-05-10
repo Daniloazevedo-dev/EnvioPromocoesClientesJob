@@ -25,8 +25,8 @@ public class LerInteresseProdutoClienteReaderConfig {
                 .name("lerInteresseProdutoClienteReader")
                 .dataSource(dataSource)
                 .sql("select * from interesse_produto_cliente " +
-                        "join cliente on (cliente = cliente.id)" +
-                        "join produto on (produto = produto.id")
+                        "join cliente on (cliente = cliente.id) " +
+                        "join produto on (produto = produto.id)")
                 .rowMapper(rowMapper())
                 .build();
     }
