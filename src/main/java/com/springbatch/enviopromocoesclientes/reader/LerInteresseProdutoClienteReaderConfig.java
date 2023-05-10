@@ -6,6 +6,7 @@ import com.springbatch.enviopromocoesclientes.dominio.Produto;
 import org.springframework.batch.item.database.JdbcCursorItemReader;
 import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 @Configuration
 public class LerInteresseProdutoClienteReaderConfig {
 
+    @Bean
     public JdbcCursorItemReader<InteresseProdutoCliente> lerInteresseProdutoClienteReader(
             @Qualifier("appDataSource")DataSource dataSource
             ) {
