@@ -16,6 +16,7 @@ public class ProcessarEmailProdutoClienteProcessor implements ItemProcessor<Inte
         email.setTo(interesseProdutoCliente.getCliente().getEmail());
         email.setSubject("Promoção Impedível!!!!");
         email.setText(gerarTextoPromocao(interesseProdutoCliente));
+        Thread.sleep(2000);
         return email;
     }
 
@@ -23,7 +24,7 @@ public class ProcessarEmailProdutoClienteProcessor implements ItemProcessor<Inte
         StringBuilder writer = new StringBuilder();
         writer.append(String.format("Olá, %s!\n\n", interesseProdutoCliente.getCliente().getNome()));
         writer.append("Essa promoção pode ser do seu interesse:\n\n");
-        writer.append(String.format("%s - %\n\n", interesseProdutoCliente.getProduto().getNome(), interesseProdutoCliente.getProduto().getDescricao()));
+        writer.append(String.format("%s - %s\n\n", interesseProdutoCliente.getProduto().getNome(), interesseProdutoCliente.getProduto().getDescricao()));
         writer.append(String.format("Por apenas: %s",
                 NumberFormat.getCurrencyInstance().format(interesseProdutoCliente.getProduto().getPreco())));
         return writer.toString();
